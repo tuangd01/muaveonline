@@ -6,6 +6,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,10 +26,14 @@ public class HomeController {
 		
 	@RequestMapping("/images")
 	public List<Image> getImages() {
-		List<Image> images = Arrays.asList(
-			new Image(1, "Treehouse of Horror V", "https://www.imdb.com/title/tt0096697/mediaviewer/rm3842005760"),
-			new Image(2, "The Town", "https://www.imdb.com/title/tt0096697/mediaviewer/rm3698134272"),
-			new Image(3, "The Last Traction Hero", "https://www.imdb.com/title/tt0096697/mediaviewer/rm1445594112"));
+		int random_int = (int)(Math.random()*(50-25+1)+25);
+		List<Image> images = new ArrayList<Image>();
+		for(int i = 0; i < random_int;i++) {
+			int random_num = (int)(Math.random()*(50-25+1)+25);
+			int random_url = (int)(Math.random()*(50-25+1)+25);
+			images.add(new Image(i,"Số"+random_num,"vja.com/booking/"+i+"/"+random_url+"/"+random_num));
+		}
+			
 		return images;
 	}
 }
